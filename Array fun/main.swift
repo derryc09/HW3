@@ -22,6 +22,7 @@ func convert(incoming:String) -> Double {
 
 
 print("Please enter a list of integers, separated by commas.")
+print("For example: 10,5,23,12,14")
 
 let userInput = input()
 let userInputArr = userInput.componentsSeparatedByString(",")
@@ -30,15 +31,20 @@ var gamestatus : Int = 0
 
 print("")
 print("What would you like to do with these numbers?")
-print("Enter: Add/Multiply/Count/Average")
+print("Pick and enter: Add/Multiply/Count/Average")
 
+// Loops until user enters 0 to abort the program
 while (gamestatus == 0){
+    
     var unknowncommand = 0;
     let task = input().lowercaseString;
+    
+    // Checks if User entered "0"
     if (task == "0"){
         gamestatus = 1
         print("")
     } else {
+        // These functions take an array of Ints and returns the results.
         func add(list : [String]) -> Double{
             var total : Double = 0
             for (var i = 0; i<userInputArr.count; i++){
@@ -63,7 +69,8 @@ while (gamestatus == 0){
             return add(list)/count(list);
         }
         
-        
+        // Generic Math Operator that calls on the function depending on 
+        // the User's request
         func Operator(list:[String], task: String) -> Double{
             switch task{
             case "add":
@@ -82,18 +89,20 @@ while (gamestatus == 0){
             }
         }
         
+    
         var result = Operator(userInputArr, task: task )
         
-            if(unknowncommand != 1){
-                if result%1 != 0 {
-                    print("")
-                    print("The result is \(result)")
-                } else {
-                    var resultInt = Int(result)
-                    print("")
-                    print("The result is \(resultInt)")
-                }
+        // Checks if user entered an unknown command
+        if(unknowncommand != 1){
+            if result%1 != 0 {
+                print("")
+                print("The result is \(result)")
+            } else {
+                var resultInt = Int(result)
+                print("")
+                print("The result is \(resultInt)")
             }
+        }
         print("What else would you like to do with these numbers?")
         print("Enter: Add/Multiply/Count/Average. To abort, enter 0")
         
