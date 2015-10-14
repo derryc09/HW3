@@ -194,7 +194,7 @@ if (userInput.lowercaseString == "n"){
             print("Unknown command")
         }
         }
-    // Throws an answer if user entered something other than y/n
+    // Throws an error if user entered something other than y/n
     }
 } else {
     print("Unknown command. Please restart the program.")
